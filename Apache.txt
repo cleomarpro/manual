@@ -1,0 +1,108 @@
+
+PRINCIPAIS COMANDOS:
+1 - Diretorio do apache: cd /var/log/apache2
+2 - Reinicializar o servidor apache: "sudo service apache2 restart" 
+3 - Parar o servidor: "sudo service apache2 start "
+4 - Mostrar o estado do servidor: "sudo service apache2 status "
+5 - Reiniciar o servido: "sudo service apache2 reload "
+6 - Virificar os loges do servidor: "cd /var/log/apache2 nano access.log "
+7 - Verificar os erros do servidor: "cd /var/log/apache2 less error.log "
+8 - Mostrar as ultimas linhas do arquivo de log: " access.log "
+9 - Testar o apache: "apache2ctl configtest"
+10 - Dar permição ao apache2: 
+cd home/poseidon/django_project/django_project
+sudo chmod 664 db.sqlite3
+sudo chown :www-data db.sqlite3
+sudo chown :www-data app
+sudo chown :www-data /home/sistema -R
+sudo ufw allow 'Apache Full'  ou  sudo ufw allow 80
+
+
+CONFIGURAÇÃO DO APACHE2
+
+1 - Instalar o python3-pip, apache2, libapache2-mod-wsgi-py3: 
+sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
+
+2 - Configrar os arquivos estaticos: python manage.py collectstatic
+
+3 - Se o farwor estiver ativo liberar as portas nececaria para ele funcionar:
+sudo ufw allow 'Apache Full'  ou  sudo ufw allow 80
+
+4 - Em etc/apache2/apache2.conf, cole ess configuração: 
+HostnameLookups Off 
+WSGIApplicationGroup %{GLOBAL}
+
+5 - Em vi /etc/apache2ports.conf adicione o IP da maquina em: Listen ip:80
+
+6 - Em /etc/apache2/sites-available/ crie um arquivo com extenção .conf
+e substitui o endereço que esta no codigo a baixo e cole nele, depois
+rode o comando: sudo a2ensite nome_do_arquivo.conf 
+e depois reeinicia o servidor: service apache2 restart
+
+<VirtualHost *:80>
+        ServerAdmin <>
+        ServerName  192.168.1.26
+        ServerAlias 192.168.1.26
+        DocumentRoot /home/sistema/gestao_varejo
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+       
+        Alias /static /home/sistema/gestao_varejo/stati
+        <Directory /home/sistema/gestao_varejo/staticfiles>
+        	Require all granted
+		Allow from all
+        </Directory>
+	
+	Alias /static /home/sistema/gestao_varejo/media
+        <Directory /home/sistema/gestao_varejo/media>
+        	Require all granted
+		Allow from all
+        </Directory>
+         
+        <Directory /home/sistema/gestao_varejo/gestao_varejo>
+        	<Files wsgi.py>
+        		Require all granted
+			Allow from all
+        	</Files>
+        </Directory>
+
+
+        WSGIDaemonProcess gestao_varejo python-path=/home/sistema/gestao_varejo         python-home=/home/sistema/gestao_varejo/venv
+        WSGIProcessGroup gestao_varejo
+        WSGIScriptAlias / /home/sistema/gestao_varejo/gestao_varejo/wsgi.py
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	# Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+7 - Vai entrar em nano /etc/hosts e vai substituir o ip e o domineo e
+depois verifica se está tudo certo 
+
+127.0.0.1 localhost //(esse não eltera)
+192.168.60.125 www.djangoproject.localhost.com.br //altera esse
+192.168.60.125 djangoproject.localhost.com.br  //altera esse
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+127.0.0.1 djangoproject.localhost  //altera esse
+
+8- Dar permição ao apache2
+cd home/poseidon/django_project/django_project
+
+sudo chmod 664 db.sqlite3
+sudo chown :www-data db.sqlite3
+sudo chown :www-data app
+sudo chown :www-data /home/sistema -R
+
+8 - Testar o apache "apache2ctl configtest"
+ REFERENCIAS
+https://www.williamzimmermann.com.br/2018/05/23/como-configurar-o-django-em-um-servidor-ubuntu-com-apache-parte-2/
+https://www.youtube.com/watch?v=aVodsj4wp6I
+

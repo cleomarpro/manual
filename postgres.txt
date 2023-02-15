@@ -1,0 +1,16 @@
+CCONFIGURAÇÃO DO POSTGRES
+
+1 - instalação:
+passo 1: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+passo 2: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+pass 3: sudo apt-get update
+passo 4: sudo apt-get -y install postgresql
+
+2 - Verção do peql: psql -- version
+3 - Usar o usuario postgres: su - postgres
+4 - Usuario privilegiado postgres: psql -d postgres -U postgres
+5 - Alterar a senha: alter user postgres with encrypted password '@dds45854455456'
+6 - Sair do banco: \q
+7 - Listar banco de dados: psql -l
+8 - Criar um banco: createdb nome_do_banco
+9 - Selecionar o Banco: psql nome_do_banco

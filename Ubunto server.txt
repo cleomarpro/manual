@@ -1,0 +1,33 @@
+COMANDOS DO UMBUNTO SERVER
+
+1 - Distribuição do ubunto: "uname -a "
+2 - Versão do servidor: "cat /etc/lsb-release"
+3- Informaçõesda verção e de cor de nome: "cat /etc/os-release"
+3 - Mudar de usuário: "sudo su usuario "
+4 - Criar novo usuário: "sudo useradd -m -s /bin/bash novoUsuario"
+5 - sudo chmod -R 777 nomeDaPasta (da permissão total a determinada pasta)
+6 - Editar arquivo no ubunto CMD: "sudo vi diretórioDoArquivo " tambem pode usar o "nano"
+7 - Cria pasta: "mkdir nomeDaPasta "
+8 - sudo passwd Nome do usario (trocar senha)
+9 - Deletar usuário: "sudo userdel nomeDoUsuario "
+10 - Reiniciar o sistem: "sudo apt autocle "
+11 - Excluir arquivos ou pasta vazia: "rmdir nome_do_arquivo ou pasta"
+11 - Excluir arquivos e pastas que possui algo dentro: "rm -r nome_do_arquivo ou pasta"
+12 - Mudando um arquivo ou pasta de propietário: "chown -Rv NomeDoPropietário arquivo ou pasta"
+
+CONFIGURAÇÃO E MANUTENÇÃO
+
+1 - Verificar se há atualização/ atualizar as listas: "sudo apt update "
+2 - Atualizar todo o sistem: "sudo apt upgrade "
+3 - Verificar se esta tudo atualizado: "sudo apt full-upgrade "
+4 - Atualozar, forçar atualização: "sudo apt dist-upgrade "
+5 - Excluir cach: "sudo apt autoremove "
+6 - limpeza geral: "sudo apt autocle"
+
+CONFIGURAÇÃO DA OPENSSH
+
+1 - Iniciar a ssh: "service ssh start"
+2 - Verificar se a ssh iniciou: "ps aux | grep ssh "
+3 - mudar a rede do virtualBox para o modo brid
+4 - acessar a maquina virtual: "nome_da_maquina@ip"
+5 - Permitir as conexões de entrada para SSH: "sudo ufw allow ssh"

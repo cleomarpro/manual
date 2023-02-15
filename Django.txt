@@ -1,0 +1,37 @@
+PRINCIPAIS COMANDOS DO DJANGO:
+
+1 - Prepara os dados para migrar: para o banco de dados "python manage.py makemigrations"
+2 - Migrar para o banco de dados: "python manage.py migrate "
+3 - Iniciar o servidor Django: "python manage.py runserver"
+4 - Criar uma virtualvenv: python3 -m venv nome_da_venv
+ - Instalar o django: pip install django
+ - Instalar o django rest framework: pip install djangorestframework
+5 - Criar oprojeto: python manage.py startproject
+7 - Ativar a virtual-enve:
+Linux: "source NomeDaVenv/bin/activate"
+Bash no windows: " source NomeDaVenv/Scripts/activate"
+Windows: "NomeDaVenv\Scripts\activate"
+5 - Criar super usuario: "python manage.py createsuperuser"
+6 - Cria uma app django: "python manage.py startapp nome da app "
+8 - Desativar a virtual-enve: "deactivate"
+
+RESOLVER PROBLEMAS DO PIP
+
+1 - Voltar a versção original do pip: "python -m ensurepip"
+2 - Atualizar o pip: " python -m pip install --upgrade pip"
+
+PERMISSÕES DO DJANGO:
+
+1 - Buscar permissão: "permissao=Permission.objects.get(codename='add_vaga')"
+2 - Inserir uma permissão ou varias: "variavel = user.user_permissions.add(permisses) "
+3 - Criar grupo de usuários: "grupo=Group.objects.create(name='Administrador')"
+4 - buscar grupo: "permissao = Group.objects.get(name='Asdminitrador') "
+4.1 - adicionar permissão ao grupo: " permissao_add=usuario.groups.add(permissao) "
+
+OBSERVAÇÕES:
+
+1 - Configuração do arquivos staticos para produção no settings
+      STATIC_URL = '/static/'
+      STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+      STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static')]
+1.1 - Rodar o comando: "python manage.py collectstatic"

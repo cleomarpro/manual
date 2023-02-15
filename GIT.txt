@@ -1,0 +1,55 @@
+CONFIGURAÇÕES:
+1 - Crie um repositório git "git init"
+2 - Criando usuário do git, utilizando o mesmo usuario do github 
+"git config --global user.name "usuário"
+3 - Configurar o e-mail, obs: use o mesmo e-maildo GitHum
+"git config --global user.email "email""
+4 - Visualizar usuário "git config --global user.name"
+5 - isualizar usuário e-mail "git config --global user.email"
+6 -Clonando o projeto via HTTPS na maquina local
+ "it clone  https://github.com/seu_usuario/seu_repositorio.git"
+7 - Clonando o projeto via SSH na maquina local
+"git remote add origin seu_link_ssh"
+8 - Depois faz um "git pull origin sua_branche
+
+CONFIGURAR SSH DO GIT HUB
+1 - Criar chave "ssh-keygen -t ed25519 -C "your_email@example.com""
+Referencia: https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows
+e precione ENTER em dotas as etapas
+2 - local do arquivo chave "cd ~/.ssh/"
+3 - abrir o arquivo e copiar a achave (cat id_ed25519.pub)
+4 - acessar o gitHub, pefil > setting > chave SSH 
+e GPG > nova chave SSH > cole a chave > em titulo,
+ de um nome para sua chave > clique em Add SSH key
+5 - adicione seu repositório git 
+"git remote add origin endereço ssh" o endereço ssh esta em,
+ acessa o gitHub > clique no seu projeto > code > ssh e copia o endereço
+
+COMANDOS DO GIT HUB
+1 - criar repositório "git init"
+2 - Verivicar se tem algo para commitar"git status"
+3 - Preparar um unico arquivo para o commit "git add nomeDoArquivo"
+4 - Preparar todos os arquivo para o commit "git add  . "
+5 - Enviar o arquivo para o repositório "git commit -m "comentáro" "
+6 - Mudar de branch "git checkout nome_de_branch"
+7 - Visualizar branche atual " git branch"
+8 - Criar uma nova branch "git checkout -b nomeDaNovaBranch "
+9 -  as branch local "git merge nomeDaNovaBranch'
+10 - as branch remota "git merge origin nomeDaNovaBranch "
+11 - 
+12 - voltar voltar au estado do commit anterior 
+incluindo as alteraçoes "git reset --hard HEAD~1"
+13 - excluir ao estado do cmommite anterrior sem 
+alterar os arquivos modificado "git reset HEAD~1"
+14 - Tirar os arquivo adicionado a fila para o commite "git reset nomeDoArquiv"
+15 - Checar o ultimo commite, acada execução desse 
+comado muda para o commita mais antigo "git checkout HEAD~1"
+16 - Voltar a veção anterior do arquivo "git checkout -- nomeDoArquiv"
+17 - Excluir arquivo do repositório, é nessário commitar depos da remoção 
+"git rm caminho/arquivo_a_ser_ignorado.txt" incluir
+ arquivo no gitignore apos ter comitado (1: é necessário excluir o arquivo do repositório,
+ 2:listar o arquivo no gitignore, 3:commitar novalmente)
+19 - Fazer pull de um commit especifico: git reset --hard "id do commit"
+20 - Deletar branch local "git branch -D nome_da_barnch"
+21 - Deletar branch remoto "git push origin --delete nome_da_barnch"
+22 - Renomer uma branch "git branch -m nome_da_barnch"

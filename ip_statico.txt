@@ -1,0 +1,17 @@
+CONFIGURAÇÃODO IP ESTATICO
+
+1 - Didiitar o comado: "ifconfig" para obiter os detalhes da sua rede
+2 -  Acessar a pasta: "/etc/netplan" e abrir o arquivo "00-installer-config.yaml" 
+e mudar para o modelo a baixo, mas com o patrao da sua rede,
+obs: preste atenção na indentação
+depois aplica essas configurações "netplan apply"
+
+network:
+  version: 2
+  ethernets:
+     enp0s3:
+        dhcp4: false
+        addresses: [192.168.2.100/24]
+        #gateway4: 192.168.2.1
+        nameservers:
+          addresses: [8.8.8.8, 8.8.4.4]

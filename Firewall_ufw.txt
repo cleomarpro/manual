@@ -1,0 +1,64 @@
+CONFIGURAÇÕES FIREWALL UFW
+
+1- Esses comandos configuram os padrões para negar 
+as conexões de entrada e permitir as conexões de saída:
+"sudo ufw default deny incoming "
+"sudo ufw default allow outgoing"
+2 -Para configurar seu servidor para permitir as 
+conexões de entrada via SSH: "sudo ufw allow ssh"
+3 - Mudar a porta de conexção da ssh: "sudo ufw allow 2222"
+4 - Faixas de portas específicas: "sudo ufw allow 6000:6007/tcp" ou udp
+5 - Você também pode especificar uma porta específica: 
+na qual o endereço IP tem permissão para se conectar
+"sudo ufw allow from 203.0.113.4 to any port 22"
+6 - Se você quiser permitir uma sub-rede de endereços IP:
+"sudo ufw allow from 203.0.113.0/24 to any port 22 " to any port 22 é opicional
+7 - Conexões a uma Interface de Rede Específica:
+"sudo ufw allow in on eth0 to any port 80"
+
+REFERENCIA:
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04-pt
+
+
+COMANDOS PRINCIPAIS FIREWALL UFW
+1 - Estado do UFW: "sudo ufw status"
+por aqui tambem vê ips e sub-redes bloqueadas
+2 - Ativer  UFW:  "sudo ufw enabled  "
+3 - Desativar UFW:  "sudo ufw disable"
+4 - Bloquear um enderesse ip: "sudo ufw deny from 203.0.113.100"
+5 - Bloquear uma sub-rede: "ufw deny from 203.0.113.0/24"
+6 - Bloquear conexões de entrada com uma interface de rede: 
+"sudo ufw deny in on eth0 from 203.0.113.100"
+7 - Permitir um ip: "sudo ufw allow from 203.0.113.101"
+8 - Permitir conexões de entrada para uma interface de rede:
+ "sudo ufw allow in on eth0 from 203.0.113.102"
+9 - Excluir regra UFW: "sudo ufw delete allow from 203.0.113.101"
+10 - Excluir regra UFW por id da regra: "sudo ufw status numbered"
+11 - Lista de servisos disponíveis: "sudo ufw app list"
+12 - Habilitar um perfil de um aplicativo: "sudo ufw allow “App”"
+13 - Deletar regras de apps "sudo ufw delete allow: "App Full"
+14 - Ver permissões disponíveis para um app: "sudo ufw app list | grep App"
+15 - permissões para http e https: "sudo ufw allow http" ou "sudo ufw allow https"
+16 - libera a portas: "sudo ufw allow 80", ou espercifica o número da outra porta
+17 - Permitir todos os HTTP e HTTPS de entrada: 
+"sudo ufw allow proto tcp from any to any port 80,44"
+18 - Permitir conexão MySQL a partir de endereço IP específico 
+ou sub-rede: "sudo ufw allow from 203.0.113.103 to any port 3306"
+19 - Para permitir que toda a sub-rede possa se conectar 
+ao seu servidor MySQL, execute:203.0.113.0/24:
+"sudo ufw allow from 203.0.113.0/24 to any port 3306"
+
+20 - Para permitir conexões PostgreSQL de entrada 
+de um endereço IP ou sub-rede específico, especifique 
+a origem com o parâmetro e defina a porta como:from5432:
+"sudo ufw allow from 203.0.113.103 to any port 5432"
+
+21 - Para permitir que toda a sub-rede possa se 
+conectar ao seu servidor PostgreSQL, execute:203.0.113.0/24: 
+"sudo ufw allow from 203.0.113.0/24 to any port 5432"
+
+ 22 - Bloquear email SMTP de saída: "sudo ufw deny out 25",
+se for outra porta, é só alterar
+
+REFERENCIA:
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
