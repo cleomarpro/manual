@@ -1,14 +1,32 @@
 1 - instalar: pip install djangorestframework-simplejwt
 2 - em setting: 
+    Em INSTALL_APPS inserir: 'rest_framework_simplejwt',
+
     REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTStatelessUserAuthentication',
-    )
-}
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
+        )
+    }
 3 - criar url: 
-    1. from rest_framework_simplejwt.views import (
-    TokenObtainSlidingView,
-    TokenRefreshSlidingView,
-    )   
-    1.  path('api/token/', TokenObtainSlidingView.as_view(), name='token_obtain'),
-        path('api/token/refresh/', TokenRefreshSlidingView.as_view(), name='token_refresh'),
+    from rest_framework_simplejwt.views import (
+        TokenObtainPairView,
+        TokenRefreshView,
+        TokenVerifyView
+    )
+
+    urlpatterns = [
+        path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+        path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+        path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    ]
+
+4 - Em views insere como no exemplo a baixa: permission_classes = (IsAuthenticated,)
+    from rest_framework.permissions import IsAuthenticated
+    class EntradaMercadoriaCreate( APIView):
+        permission_classes = (IsAuthenticated,) 
+
+    def get(self, request):
+        entradaMercadoria = EntradaMercadoria.objects.all()
+        serializer = EntradaMercadoriaSerializer(entradaMercadoria, many = True)
+        return Response(serializer.data)
+        #return Response( status = status.HTTP_404_NOT_FOUND)

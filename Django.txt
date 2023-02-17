@@ -1,19 +1,21 @@
 PRINCIPAIS COMANDOS DO DJANGO:
-
-1 - Prepara os dados para migrar: para o banco de dados "python manage.py makemigrations"
-2 - Migrar para o banco de dados: "python manage.py migrate "
-3 - Iniciar o servidor Django: "python manage.py runserver"
-4 - Criar uma virtualvenv: python3 -m venv nome_da_venv
- - Instalar o django: pip install django
- - Instalar o django rest framework: pip install djangorestframework
-5 - Criar oprojeto: python manage.py startproject
-7 - Ativar a virtual-enve:
+ - Criar uma virtualvenv: python3 -m venv nome_da_venv
+ - Ativar a virtual-enve:
 Linux: "source NomeDaVenv/bin/activate"
 Bash no windows: " source NomeDaVenv/Scripts/activate"
 Windows: "NomeDaVenv\Scripts\activate"
-5 - Criar super usuario: "python manage.py createsuperuser"
-6 - Cria uma app django: "python manage.py startapp nome da app "
-8 - Desativar a virtual-enve: "deactivate"
+ - Desativar a virtual-enve: "deactivate"
+ - Instalar o django: pip install django
+ - Instalar o django rest framework: pip install djangorestframework
+ - Criar oprojeto: django-admin startproject nome_do_projeto
+ - Cria uma app django: "python manage.py startapp nome_da_app "
+ - Migrar para o banco de dados: "python manage.py migrate "
+ - Iniciar o servidor Django: "python manage.py runserver"
+ - Criar super usuario: "python manage.py createsuperuser"
+ - Prepara os dados para migrar: para o banco de dados "python manage.py makemigrations"
+ - Criar os requirements: pip freeze > requirements.txt
+ - Instalar os requirements: pip install -r requirements.txt
+ 
 
 RESOLVER PROBLEMAS DO PIP
 
