@@ -4,8 +4,8 @@ AULA DE DOCKER
 -https://docs.docker.com/desktop/install/ubuntu/ (link para instalação do docker)
 	Comandos
 
--docker pull nome_da_containers(baichar_uma_containers)
--docker images (mostrar containers
+- docker pull nome_da_containers(baichar_uma_containers)
+- docker images : mostrar containers
 - docker ps(Lista os containers que estão rodand)
 - docker ps -a(Lista todos os containers)
 - docker stop id_do_container(Parar um container)
@@ -14,9 +14,9 @@ AULA DE DOCKER
 - docker rm id_do_container(excluir um containers)
 - docker rmi id_da_imagemr(excluir uma imagem)
 - docker  exec nome_de_container comando (execultar comando no container)
--docker exec -it nome_de_container bash (abrir o terminal do container e interagir com ele)
--docker  run --name django_container  -p 8080:80 -d ubuntu
--docker build -t django-gestao_varejo .(criar iamgem)
--
+- docker exec -it nome_de_container bash (abrir o terminal do container e interagir com ele)
+- docker  run --name django_container  -p 8080:80 -d ubuntu
+- docker build -t django-gestao_varejo .(criar iamgem)
+- Pra criar o container: docker-compose up
 -
 -

@@ -30,3 +30,13 @@
         serializer = EntradaMercadoriaSerializer(entradaMercadoria, many = True)
         return Response(serializer.data)
         #return Response( status = status.HTTP_404_NOT_FOUND)
+
+PERMITIR ACESSO A DA API A NAVEGADORES E ENDEREÇOS DIFERENTES
+
+1 - Documentação :https://pypi.org/project/django-cors-headers/
+2 - Isttalar o CROS: python -m pip install django-cors-headers
+3 - Adicionar a app em install_apps: 'corsheaders',
+4 - Adiciona o middleware em middlewares antes do CommonMiddleware: 
+'corsheaders.middleware.CorsMiddleware',
+'django.middleware.common.CommonMiddleware',
+5  - adiciona variável de configuração: CORS_ALLOW_ALL_ORIGINS = True
